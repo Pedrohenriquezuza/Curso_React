@@ -10,7 +10,7 @@ function App() {
       <h1>Fundamentos Base Do React</h1>
       <PrimeiroComponente />
       <Events />
-      <Challenge
+      <Challenge />
     </div>
   );
 }
