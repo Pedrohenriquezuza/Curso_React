@@ -1,0 +1,12 @@
+p {
+  font-family: "Gill Sans", "Gill Sans MT";
+  padding: 3px;
+  color: white;
+  background-color: black;
+}
+
+.my-comp-paragraph {
+  background-color: yellow;
+  color: black;
+  font-weight: bold;
+}
