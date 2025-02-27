@@ -7,9 +7,14 @@ import ListRender from "./components/ListRender";
 import ManagerData from "./components/ManagerData";
 import ShowUserName from "./components/ShowUserName";
 import CarDetails from "./components/CarDetails";
-
+import Fragment from "./components/Fragment";
+import Container from "./components/Container";
+import ExecuteFunction from "./components/ExecuteFunction";
+import Message from "./components/Message";
+import ChangeMessageState from "./components/ChangeMessageState";
+import UserDetails from "./components/UserDetails";
 function App() {
-  const name = "Matheus";
+  //const name = "Matheus";
   const [userName] = useState("Maria Linda");
 
   const cars = [
@@ -17,6 +22,24 @@ function App() {
     { id: 2, brand: "BMW", color: "Branca", newCar: false, km: 1500 },
     { id: 3, brand: "Renault", color: "Preta", newCar: false, km: 10258 },
   ];
+
+  function showMessage() {
+    console.log("Executando o Evento do componente pai");
+  }
+
+  const [message, setMessage] = useState("")
+
+  const handleMessage = (msg) => {
+    setMessage(msg);
+  }
+
+  const users = [
+    {id:1, name: "Pedro", age: 14, job: "Programador"},
+    {id:2, name: "Maria", age: 20, job: "Advogada"},
+    {id:3, name: "Eduardo", age: 11, job: "Gamer"},
+    {id:4, name: "Clara", age: 19, job: "Reporter"},
+  ]
+
   return (
     <div>
       <h1>Avançando em React</h1>
@@ -62,7 +85,33 @@ function App() {
 
       {/*Loops em arrays de Objetos*/}
       {cars.map((car) => (
-        <CarDetails brand={car.brand} color={car.color} km={car.km + " Km/h"} newCar={car.newCar}/>
+        <CarDetails
+          key={car.id}
+          brand={car.brand}
+          color={car.color}
+          km={car.km + " Km/h"}
+          newCar={car.newCar}
+        />
+      ))}
+
+      {/* Fragment */}
+      <Fragment />
+      <Container myValue="testing">
+        <p>Este é o conteúdo</p>
+      </Container>
+      <Container myValue="Olá Container">
+        <h5>Testando Container</h5>
+      </Container>
+
+      {/* Executar função */}
+      <ExecuteFunction myFunction={showMessage} />
+      {/*State lift*/}
+      <Message msg={message}/>
+      <ChangeMessageState handleMessage={handleMessage}/>
+
+      {/* Desafio */}
+      {users.map((user) => (
+        <UserDetails key={user.id} name={user.name} age={user.age} job={user.job}/>
       ))}
     </div>
   );
