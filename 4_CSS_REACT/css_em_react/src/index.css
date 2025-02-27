@@ -10,3 +10,17 @@ h1 {
   color: rgb(44, 81, 204);
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.377);
 }
+
+.red-title {
+  padding: 2px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+  font-weight: 500;
+  background-color: red;
+}
+
+.title {
+  padding: 2px;
+  background-color: black;
+  color: white;
+}
