@@ -65,8 +65,30 @@ function App() {
   };
 
   //  process the letter input
-  const verifyLetter = () => {
-    setgameStage(stages[2].name);
+  const verifyLetter = (letter) => {
+    const normalizedLetter = letter.toLowerCase()
+
+    // check if letter has already been utilized 
+
+    if(guessedLetters.includes(normalizedLetter) || wrongLetters.includes(normalizedLetter)) {
+      return;
+    }
+
+    // push guessed letter or remove a guess
+    if(letters.includes(normalizedLetter)) {
+      setGuessedLetters((actualGuessedLetters) => [
+        ...actualGuessedLetters,
+        normalizedLetter,
+      ])
+    } else {
+      setWrongLetters((actualWrongLetters) => [
+        ...actualWrongLetters,
+        normalizedLetter,
+      ])
+    }
+  
+    console.log(guessedLetters);
+    console.log(wrongLetters);
   };
 
   // Restarts the game
@@ -85,7 +107,7 @@ function App() {
           pickedCategory={pickedCategory}
           letters={letters}
           guessedLetters={guessedLetters}
-          wordLetters={wrongLetters}
+          wrongLetters={wrongLetters}
           guesses={guesses}
           score={score}
         />
